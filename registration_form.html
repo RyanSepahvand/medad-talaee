@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>School Registration</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    button {
+        background-color: #4caf50;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .registration-details {
+        margin-top: 30px;
+    }
+
+    .registration-details p {
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>School Registration Form</h2>
+
+    <form id="registrationForm">
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        
+        <label for="grade">Grade:</label>
+        <input type="number" id="grade" min="1" max="12" required>
+        
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script>
+    // Function to handle form submission
+    function handleFormSubmit(event) {
+        event.preventDefault();
+
+        // Get form values
+        var fullName = document.getElementById('fullName').value;
+        var email = document.getElementById('email').value;
+        var grade = document.getElementById('grade').value;
+
+        // Create new registration object
+        var registration = {
+            fullName: fullName,
+            email: email,
+            grade: grade
+        };
+
+        // Save registration to localStorage
+        var registrations = JSON.parse(localStorage.getItem('registrations')) || [];
+        registrations.push(registration);
+        localStorage.setItem('registrations', JSON.stringify(registrations));
+
+        // Redirect to print page
+        window.location.href = 'index.html';
+    }
+
+    // Add form submit event listener
+    document.getElementById('registrationForm').addEventListener('submit', handleFormSubmit);
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
